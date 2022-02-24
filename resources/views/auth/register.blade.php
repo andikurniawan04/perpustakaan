@@ -10,7 +10,7 @@
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-5 d-none d-lg-block" style="background-image: url('img/perpus2.jpg');"></div>
+                        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                         <div class="col-lg-7">
                             <div class="p-5">
                                 <div class="text-center">
@@ -57,7 +57,7 @@
                                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="/login">Already have an account? Login!</a>
+                                    <a class="small" href="login.html">Already have an account? Login!</a>
                                 </div>
                             </div>
                         </div>
