@@ -20,7 +20,7 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                         </div>
-                                        <form action="/register" method="POST" class="user" enctype="multipart/form-data">
+                                        <form action="{{route('register.store')}}" method="POST" class="user" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
