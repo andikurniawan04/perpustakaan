@@ -9,8 +9,8 @@ class Petugas extends Model
 {
     use HasFactory;
 
-    public function anggota()
+    public function meminjams()
     {
-        return $this->belongsToMany(Anggota::class, 'meminjams');
+        return $this->morphMany(Meminjam::class, 'meminjamtable');
     }
 }

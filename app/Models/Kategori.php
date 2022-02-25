@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Meminjam extends Model
+class Kategori extends Model
 {
     use HasFactory;
-
-    public function meminjamtable()
-    {
-        return $this->morphTo();
-    }
 }

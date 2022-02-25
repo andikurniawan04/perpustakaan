@@ -14,10 +14,10 @@ class CreatePetugasTable extends Migration
     public function up()
     {
         Schema::create('petugas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id('id_petugas')->autoIncrement();
             $table->string('nama', 100);
             $table->string('alamat', 255);
-            $table->string('no_tlp', 15);
+            $table->string('no_tlp');
             $table->timestamps();
         });
     }
