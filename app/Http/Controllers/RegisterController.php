@@ -11,7 +11,7 @@ class RegisterController extends Controller
     public function index(){
         return view('auth.register',[
             'title' => 'Register',
-            'active' => 'register'
+            'active' => 'register',
         ]);
     }
 
@@ -19,7 +19,7 @@ class RegisterController extends Controller
         $request()->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:5|max:255'
+            'password' => 'required|min:5|max:255',
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);

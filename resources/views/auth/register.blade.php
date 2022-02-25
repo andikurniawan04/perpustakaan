@@ -38,7 +38,7 @@
                                             id="password" placeholder="Password">
                                     </div>
                                 </div>
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Register Account
                                             </button>
                                             <hr>
