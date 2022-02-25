@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Meminjam extends Model
 {
     use HasFactory;
-
-    public function meminjamtable()
-    {
-        return $this->morphTo();
-    }
 }
