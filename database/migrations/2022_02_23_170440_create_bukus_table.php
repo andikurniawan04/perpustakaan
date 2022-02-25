@@ -14,12 +14,12 @@ class CreateBukusTable extends Migration
     public function up()
     {
         Schema::create('bukus', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id('id_buku')->autoIncrement();
             $table->unsignedBigInteger('id_kategori');
-            $table->string('judul', 100);
-            $table->string('pengarang', 50);
-            $table->string('penerbit', 50);
-            $table->foreign('id_kategori')->references('id')->on('categories');
+            // $table->foreign('id_kategori')->references('id_kategori')->on('kategori');
+            $table->string('judul_buku', 100);
+            $table->string('pengarang', 100);
+            $table->string('penerbit', 100);
             $table->timestamps();
         });
     }

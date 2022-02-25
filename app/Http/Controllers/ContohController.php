@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Contoh;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ContohController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::all();
-        return view('category.index', compact('data'));
+        return view('contoh');
     }
 
     /**
@@ -25,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        //
     }
 
     /**
@@ -36,29 +35,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
-        return redirect()->route('category');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Contoh  $contoh
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $id)
+    public function show(Contoh $contoh)
     {
-        $data = Category::find($id);
-        return view('category.index', compact('data'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Contoh  $contoh
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Contoh $contoh)
     {
         //
     }
@@ -67,26 +64,22 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Contoh  $contoh
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $id)
+    public function update(Request $request, Contoh $contoh)
     {
-        $data = Category::find($id);
-        $data = Category::create($request->all());
-        return redirect()->route('category');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Contoh  $contoh
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $id)
+    public function destroy(Contoh $contoh)
     {
-        $data = Category::find($id);
-        $data->delete();
-        return redirect()->route('category');
+        //
     }
 }
