@@ -32,7 +32,7 @@ Route::get('/kategori', function () {
 });
 
 Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::POST('/register', [RegisterController::class, 'store']);
 Route::get('/contoh', [ContohController::class, 'index']);
 
 
