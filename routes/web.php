@@ -20,3 +20,14 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('auth.login');
 });
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+
+Route::get('/kategori', function () {
+    return view('admin.kategori.index');
+});
+
+Route::get('/contoh', [ContohController::class, 'index']);
