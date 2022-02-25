@@ -15,6 +15,7 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
+// Dashboard
 Route::get('/', function () {
     return view('admin.index');
 });

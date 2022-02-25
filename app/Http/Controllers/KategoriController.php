@@ -39,13 +39,18 @@ class KategoriController extends Controller
         $request->validate([
             'nama',
         ]);
-        Kategori::create([
+        $result = Kategori::create([
 
             'keterangan' => $request->nama
         ]);
 
-        return redirect()->route('kategori.index')
-            ->with('success', 'Data Berhasil Ditambahkan');
+        if ($result) {
+            return redirect()->route('kategori.index')
+                ->with('Berhasil', 'Data Berhasil Ditambahkan');
+        } else {
+            return redirect()->route('kategori.index')
+                ->with('Gagal', 'Data gagal Ditambahkan');
+        }
     }
 
     /**
@@ -82,11 +87,17 @@ class KategoriController extends Controller
         $request->validate([
             'nama',
         ]);
-        Kategori::findOrFail($id)->update([
+        $result = Kategori::findOrFail($id)->update([
             'keterangan' => $request->nama
         ]);
-        return redirect()->route('kategori.index')
-            ->with('success', 'Data Berhasil Diedit');
+
+        if ($result) {
+            return redirect()->route('kategori.index')
+                ->with('Berhasil', 'Data Berhasil Diubah');
+        } else {
+            return redirect()->route('kategori.index')
+                ->with('Gagal', 'Data gagal Diubah');
+        }
     }
 
     /**
@@ -97,8 +108,13 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        Kategori::findOrFail($id)->delete();
-        return redirect()->route('kategori.index')
-            ->with('success', 'Data Berhasil Dihapus');
+        $result = Kategori::findOrFail($id)->delete();
+        if ($result) {
+            return redirect()->route('kategori.index')
+                ->with('Berhasil', 'Data Berhasil Dihapus');
+        } else {
+            return redirect()->route('kategori.index')
+                ->with('Gagal', 'Data gagal Dihapus');
+        }
     }
 }
