@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContohController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,8 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-
-Route::get('/kategori', function () {
-    return view('admin.kategori.index');
-});
+// Kategori
+Route::resource('kategori', KategoriController::class);
 
 Route::get('/contoh', [ContohController::class, 'index']);
 
