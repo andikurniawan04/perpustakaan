@@ -13,4 +13,9 @@ class Kategori extends Model
         'keterangan',
     ];
     protected $primaryKey = 'id_kategori';
+
+    public function buku()
+    {
+        return $this->belongsTo(Buku::class);
+    }
 }
