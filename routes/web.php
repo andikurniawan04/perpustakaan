@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
+Route::get('/index', function () {
+    return view('admin.index');
+});
+
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -25,7 +29,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
-
 
 Route::get('/kategori', function () {
     return view('admin.kategori.index');

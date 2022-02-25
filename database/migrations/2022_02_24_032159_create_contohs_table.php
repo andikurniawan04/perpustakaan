@@ -15,7 +15,7 @@ class CreateContohsTable extends Migration
     {
         Schema::create('contohs', function (Blueprint $table) {
             $table->id("contohid");
-            $table->integer("usia");
+            $table->string("usia");
             $table->string("nama_lengkap");
             $table->timestamps();
         });
