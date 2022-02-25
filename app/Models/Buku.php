@@ -4,19 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Bus;
 
 class Buku extends Model
 {
     use HasFactory;
 
-    public function kategori()
+    public function categories()
     {
-        return $this->hasOne(Kategori::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function meminjams()
+    public function anggota()
     {
-        return $this->morphMany(Meminjam::class, 'meminjamtable');
+        return $this->belongsToMany(Anggota::class, 'meminjams');
     }
 }

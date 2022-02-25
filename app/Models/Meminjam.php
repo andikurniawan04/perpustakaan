@@ -9,8 +9,9 @@ class Meminjam extends Model
 {
     use HasFactory;
 
-    public function meminjamtable()
-    {
-        return $this->morphTo();
-    }
+    public $table = 'meminjams';
+
+    protected $fillable = [
+        'id_anggota', 'id_buku', 'id_petugas'
+    ];
 }

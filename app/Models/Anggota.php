@@ -9,8 +9,13 @@ class Anggota extends Model
 {
     use HasFactory;
 
-    public function meminjams()
+    public function buku()
     {
-        return $this->morphMany(Meminjam::class, 'meminjamtable');
+        return $this->belongsToMany(Buku::class, 'meminjams');
+    }
+
+    public function petugas()
+    {
+        return $this->belongsToMany(Petugas::class, 'meminjams');
     }
 }
