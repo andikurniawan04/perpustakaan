@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContohController;
+
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,7 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
+// Dashboard
 Route::get('/', function () {
     return view('admin.index');
 });
@@ -27,9 +30,12 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/kategori', function () {
-    return view('admin.kategori.index');
+Route::get('/register', function () {
+    return view('auth.register');
 });
+
+// Kategori
+Route::resource('kategori', KategoriController::class);
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
