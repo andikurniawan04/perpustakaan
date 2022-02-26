@@ -30,16 +30,11 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
 // Kategori
 Route::resource('kategori', KategoriController::class);
+//Register
+Route::resource('register', RegisterController::class);
 
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/contoh', [ContohController::class, 'index']);
 
 
 // Route::get('/', function () { 
