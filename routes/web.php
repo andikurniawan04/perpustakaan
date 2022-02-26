@@ -31,8 +31,8 @@ Route::get('/kategori', function () {
     return view('admin.kategori.index');
 });
 
-Route::resource('register', RegisterController::class);
-
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/contoh', [ContohController::class, 'index']);
 
 
