@@ -14,8 +14,9 @@ class Kategori extends Model
     ];
     protected $primaryKey = 'id_kategori';
 
-    public function buku()
+    public function Buku()
     {
-        return $this->belongsTo(Buku::class);
+        // Satu kategori dimiliki beberapa buku
+        return $this->hasMany(Buku::class);
     }
 }

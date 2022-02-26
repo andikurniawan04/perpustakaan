@@ -42,8 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function buku()
+    public function meminjam()
     {
-        return $this->belongsToMany(Buku::class, 'meminjams');
+        // Satu buku memiliki satu kategori
+        return $this->hasMany(Meminjam::class, 'id_user', 'id_user');
     }
 }
