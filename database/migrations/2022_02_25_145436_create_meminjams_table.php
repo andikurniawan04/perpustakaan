@@ -14,15 +14,13 @@ class CreateMeminjamsTable extends Migration
     public function up()
     {
         Schema::create('meminjams', function (Blueprint $table) {
-            $table->id('id_peminjaman')->autoIncrement();
-            $table->date('tanggal_peminjaman');
-            $table->date('tanggal_pengembalian');
-            $table->integer('jumlah');
-            $table->unsignedBigInteger('id_anggota');
-            $table->unsignedBigInteger('id_petugas');
+            $table->id('id_peminjaman');
+            $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_buku');
-            $table->foreign('id_anggota')->references('id_anggota')->on('anggotas');
-            $table->foreign('id_petugas')->references('id_petugas')->on('petugas');
+            $table->date('tanggal_pinjam');
+            $table->date('tanggal_kembali');
+            $table->integer('jumlah');
+            $table->foreign('id_user')->references('id_user')->on('users');
             $table->foreign('id_buku')->references('id_buku')->on('bukus');
             $table->timestamps();
         });
