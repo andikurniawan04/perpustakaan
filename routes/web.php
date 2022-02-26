@@ -15,10 +15,15 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
-// Dashboard
-Route::get('/', function () {
-    return view('admin.index');
+Route::group(['middleware' => ['auth', 'cekStatus:petugas']], function () {
+    // Dashboard Admin
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    // Kategori
+    Route::resource('kategori', KategoriController::class);
 });
+
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -28,8 +33,7 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-// Kategori
-Route::resource('kategori', KategoriController::class);
+
 
 Route::get('/contoh', [ContohController::class, 'index']);
 
