@@ -27,7 +27,18 @@ class BukuController extends Controller
 
     public function store(Request $request)
     {
-        return $request;
+        $result = Buku::create([
+            'judul_buku' => $request->judul,
+            'id_kategori' => $request->kategori_id,
+            'pengarang' => $request->pengarang,
+            'penerbit' => $request->penerbit,
+        ]);
+
+        if ($result) {
+            return redirect('/buku')->with('success', 'Data berhasil ditambahkan!');
+        } else {
+            return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+        }
     }
 
     /**
@@ -38,6 +49,7 @@ class BukuController extends Controller
      */
     public function show(Buku $buku)
     {
+        return view('admin.buku.detail', ['buku' => $buku]);
     }
 
     /**
@@ -48,7 +60,10 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        //
+        return view('admin.buku.edit', [
+            'buku' => $buku,
+            'categories' => Kategori::all()
+        ]);
     }
 
     /**
@@ -58,8 +73,22 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buku $id)
+    public function update(Request $request, Buku $buku)
     {
+        $data = ([
+            'judul_buku' => $request->judul,
+            'id_kategori' => $request->kategori_id,
+            'pengarang' => $request->pengarang,
+            'penerbit' => $request->penerbit,
+        ]);
+
+        $result = Buku::where('id', $buku->id_buku)->update($data);
+
+        if ($result) {
+            return redirect('/buku')->with('message', 'Data added Successfully');;
+        } else {
+            return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+        }
     }
 
     /**
@@ -68,7 +97,10 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $id)
+    public function destroy(Buku $buku)
     {
+        Buku::destroy([$buku->id_buku]);
+
+        return redirect('/buku')->with('success', 'Game is successfully saved');
     }
 }

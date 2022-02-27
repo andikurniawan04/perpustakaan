@@ -10,8 +10,10 @@ class Buku extends Model
 {
     use HasFactory;
 
-    // Tidak membatasi jenis file
+    // // Tidak membatasi jenis file
     protected $guarded = ['id_buku'];
+
+    protected $primaryKey = 'id_buku';
 
     public function category()
     {

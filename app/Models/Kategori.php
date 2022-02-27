@@ -9,6 +9,7 @@ class Kategori extends Model
 {
     use HasFactory;
     protected $table = 'kategori';
+
     protected $fillable = [
         'keterangan',
     ];
@@ -16,7 +17,7 @@ class Kategori extends Model
 
     public function Buku()
     {
-        // Satu kategori dimiliki beberapa buku
+        // Satu kategori dimiliki banyak buku
         return $this->hasMany(Buku::class);
     }
 }

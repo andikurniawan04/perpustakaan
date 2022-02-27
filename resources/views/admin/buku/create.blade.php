@@ -21,11 +21,12 @@
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-md-8">
-                                        <form method="post" action="/buku">
+                                        <form method="post" action="{{ route('buku.store') }}">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="judul" class="form-label">Judul Buku</label>
-                                                <input type="text" class="form-control" id="judul" name="judul">
+                                                <input type="text" class="form-control" id="judul" name="judul"
+                                                    value="{{ old('judul') }}" required autofocus>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="Kategori" class="form-label">Kategori</label>
@@ -33,60 +34,69 @@
                                                     id="kategori_id" name="kategori_id">
                                                     <option selected>Pilih Kategori</option>
                                                     @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->keterangan }}
-                                                    </option>
+                                                    @if (old('kategori_id') == $category->id_kategori)
+                                                    <option value="{{ $category->id_kategori }}" selected>{{
+                                                        $category->keterangan
+                                                        }}</option>
+                                                    @else
+                                                    <option value="{{ $category->id_kategori }}">{{
+                                                        $category->keterangan }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="penerbit" class="form-label">Penerbit</label>
-                                                <input type="text" class="form-control" id="penerbit" name="penerbit">
+                                                <label for="pengarang" class="form-label">Pengarang</label>
+                                                <input type="text" class="form-control" id="pengarang" name="pengarang"
+                                                    value="{{ old('pengarang') }}" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="pengarang" class="form-label">Pengarang</label>
-                                                <input type="text" class="form-control" id="pengarang" name="pengarang">
+                                                <label for="penerbit" class="form-label">Penerbit</label>
+                                                <input type="text" class="form-control" id="penerbit" name="penerbit"
+                                                    value="{{ old('penerbit') }}" required>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                        </section>
                     </div>
+                    </section>
                 </div>
-
-
-
-                <!-- Footer -->
-                @include('partials.footer')
-                <!-- End of Footer -->
-
             </div>
+
+
+
+            <!-- Footer -->
+            @include('partials.footer')
+            <!-- End of Footer -->
+
         </div>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
+    </div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

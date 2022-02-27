@@ -1,28 +1,16 @@
 @extends('layouts/app')
-<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/bootstrap-5.1.3-dist/css/bootstrap.css') }}">
+
+<link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 @section('content')
-<!-- Page Wrapper -->
+
 <div id="wrapper">
-
-    <!-- Sidebar -->
     @include('partials.sidebar')
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
-        <!-- Main Content -->
         <div id="content">
-
-            <!-- Topbar -->
             @include('partials.topbar')
-            <!-- End of Topbar -->
-
-            <!-- Begin Page Content -->
             <div class="container-fluid">
-
-                <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">{{ $title }}</h1>
                 </div>
@@ -33,8 +21,8 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered">
-                                <a href="/buku/create"
-                                    class="btn btn-primary text-decoration-none font-weight-normal"><i>Buat
+                                <a href="{{ route('buku.create') }}"
+                                    class="btn btn-primary text-decoration-none font-weight-normal mb-3"><i>Buat
                                         data
                                         Buku</i></a>
                                 <thead>
@@ -56,40 +44,38 @@
                                         <td>{{ $buku -> pengarang }}</td>
                                         <td>{{ $buku -> penerbit }}</td>
                                         <td>
-                                            <a href="/buku/{{ $buku->id_buku }}"><span>
+                                            <a href="/buku/{{ $buku->id_buku }}" type="button"
+                                                class="btn btn-success"><span>
                                                     <i class="fas fa-eye"></i></span></a>
-                                            <a href="/buku/{{ $buku->id_buku }}"><span>
-                                                    <i class="fas fa-eye"></i></span></a>
-                                            <a href="/buku/{{ $buku->id_buku }}"><span>
-                                                    <i class="fas fa-trash"></i></span></a>
+                                            <a href="/buku/{{ $buku->id_buku }}/edit" type="button"
+                                                class="btn btn-primary"><span>
+                                                    <i class="fas fa-edit"></i></span></a>
+                                            <form action="/buku/{{ $buku->id_buku }}" method="POST" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <a class="btn btn-danger border-0"
+                                                    onclick="return confirm('Apakah kamu yakin?')"><span>
+                                                        <i class="fas fa-trash"></i></span></a>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
+                            <div class="d-flex justify-content-end">
+                                {{ $bukus->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-                <!-- Footer -->
                 @include('partials.footer')
-                <!-- End of Footer -->
-
             </div>
-            <!-- End of Content Wrapper -->
-
         </div>
-        <!-- End of Page Wrapper -->
     </div>
-    @endsection
+
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+</div>
+@endsection
