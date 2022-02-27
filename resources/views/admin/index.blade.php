@@ -36,7 +36,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">1.500 buku</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-book fa-2x text-gray-300"></i>
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -51,17 +51,17 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Data Anggota</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">200 Anggota</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">200 anggota</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-running fa-2x text-gray-300"></i>
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- User Anggota -->
+                        <!-- User -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -83,12 +83,58 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-spa fa-2x text-gray-300"></i>
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                         
+                        <div class="col-lg-5 mb-4 ">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Karya Boy Chandra</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            src="img/cover1.jpg" alt="...">
+                                    </div>
+                                    <p>Buat kamu yang lagi baper atau butuh suntikan energi dan semangat, 
+                                        membaca prosa-prosa Boy Chandra ini bisa cukup menghibur. 
+                                        Terdiri dari lima bagian, kita akan dibawa hanyut oleh tulisan-tulisan yang sangat mengena di hati. 
+                                        Mulai dari soal memaknai arti kenangan, belajar untuk tidak mengulangi kesalahan yang sama lagi, mengatasi kesedihan akan luka atau kepahitan yang baru saja dialami, belajar untuk merelakan dan mengikhlaskan, 
+                                        hingga memaknai arti cinta dengan perspektif yang lebih luas lagi.
+                                         </a>
+                                        
+                                </div>
+                            </div>
+                            
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tere Liye</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            src="img/cover9.jpg" alt="...">
+                                    </div>
+                                    <p>Buku ini menceritakan tentang gadis berumur 12 tahun bernama Tania. 
+                                        Gadis kecil yang harus putus sekolah dan mengamen bersama adiknya sepanjang hari setelah 3 tahun lalu ayahnya pergi untuk selamanya. 
+                                        Tania, Dede (adiknya), dan ibunya tinggal di sebuah rumah kardus di pinggir kota akibat kesulitan ekonomi.
+
+                                        </a>
+                                        
+                                </div>
+                            </div>
+                            
+                            
+                    
+                        
 
 
                 <!-- /.container-fluid -->
@@ -122,7 +168,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih Logout untuk mengakhiri hubungan kita :)</div>
+                <div class="modal-body">Pilih Logout untuk keluar dari halaman</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Logout</a>
