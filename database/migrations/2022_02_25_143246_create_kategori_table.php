@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetugasTable extends Migration
+class CreateKategoriTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePetugasTable extends Migration
      */
     public function up()
     {
-        Schema::create('petugas', function (Blueprint $table) {
-            $table->id('id_petugas')->autoIncrement();
-            $table->string('nama', 100);
-            $table->string('alamat', 255);
-            $table->string('no_tlp');
+        Schema::create('kategori', function (Blueprint $table) {
+            $table->id('id_kategori');
+            $table->string('keterangan', 15);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreatePetugasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('petugas');
+        Schema::dropIfExists('kategori');
     }
 }

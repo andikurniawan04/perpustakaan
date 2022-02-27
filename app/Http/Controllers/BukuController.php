@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller
@@ -14,7 +15,8 @@ class BukuController extends Controller
      */
     public function index()
     {
-        //
+        $data = Buku::all();
+        return view('buku.index', compact('data'));
     }
 
     /**
@@ -24,7 +26,8 @@ class BukuController extends Controller
      */
     public function create()
     {
-        //
+        $category = Kategori::all();
+        return view('buku.create', compact('category'));
     }
 
     /**
@@ -35,7 +38,13 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $buku = new Buku;
+        $buku->id_kategori = $request->kategori_id;
+        $buku->judul_buku = $request->judul;
+        $buku->pengarang = $request->pengarang;
+        $buku->penerbit = $request->penerbit;
+        $buku->save();
+        return redirect()->route('buku');
     }
 
     /**
@@ -44,9 +53,11 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function show(Buku $buku)
+    public function show(Buku $id)
     {
-        //
+        $buku = Buku::find($id);
+        $category = Kategori::all();
+        return view('buku.show', compact('buku', 'category'));
     }
 
     /**
@@ -67,9 +78,11 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Request $request, Buku $id)
     {
-        //
+        $buku = Buku::find($id);
+        $buku->update($request->all());
+        return redirect()->route('buku');
     }
 
     /**
@@ -78,8 +91,10 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $buku)
+    public function destroy(Buku $id)
     {
-        //
+        $buku = Buku::find($id);
+        $buku->delete();
+        return redirect()->route('buku');
     }
 }

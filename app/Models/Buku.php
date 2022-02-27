@@ -10,13 +10,16 @@ class Buku extends Model
 {
     use HasFactory;
 
+    // Tidak membatasi jenis file
+    protected $guarded = [];
+
     public function kategori()
     {
-        return $this->hasOne(Kategori::class);
+        return $this->hasMany(Kategori::class);
     }
 
-    public function meminjams()
+    public function user()
     {
-        return $this->morphMany(Meminjam::class, 'meminjamtable');
+        return $this->belongsToMany(User::class, 'meminjams');
     }
 }
