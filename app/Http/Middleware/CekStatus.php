@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CekStatus
 {
@@ -19,6 +20,12 @@ class CekStatus
         if (in_array($request->user()->status, $status)) {
             return $next($request);
         }
-        abort(403, "Anda tidak memiliki akses");
+        if (Auth::user()->status == 'petugas') {
+            return redirect('/');
+        } elseif (Auth::user()->status == 'anggota') {
+            return redirect('/home');
+        } else {
+            return redirect('/login');
+        }
     }
 }
