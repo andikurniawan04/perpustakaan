@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContohController;
 use App\Http\Controllers\KategoriController;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,21 +15,40 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
-// Dashboard
-Route::get('/', function () {
-    return view('admin.index');
+Route::middleware(['auth', 'status:anggota'])->group(function () {
+    // Dashboard Anggota
+    Route::get('/home', function () {
+        return view('anggota.index');
+    });
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
+
+// Cuma statusnya petugas doang yang bisa ngakses halaman berikut
+Route::middleware(['auth', 'status:petugas'])->group(function () {
+    // Dashboard Admin
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    // Kategori
+    Route::resource('kategori', KategoriController::class);
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
+
+
+// Cuma statusnya yang belom login yang bisa ngakses halaman berikut
+Route::middleware(['guest'])->group(function () {
+    // Login
+    Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+
+    Route::get('/register', function () {
+        return view('auth.register');
+    });
 });
 
-// Kategori
-Route::resource('kategori', KategoriController::class);
+// Logout
+Route::post('/logout', [LoginController::class, 'logout']);
+
 
 Route::get('/contoh', [ContohController::class, 'index']);
 
