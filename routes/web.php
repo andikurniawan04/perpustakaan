@@ -17,30 +17,51 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-        return view('admin.index');
-    });
-
-Route::get('/konten', function () {
-        return view('admin.konten');
-    });
-
-Route::get('/anggota', function () {
+Route::middleware(['auth', 'status:anggota'])->group(function () {
+    // Dashboard Anggota
+    Route::get('/home', function () {
         return view('anggota.index');
     });
-
-Route::get('/artikel', function () {
+    Route::get('/artikel', function () {
         return view('anggota.artikel');
     });
-
-Route::get('/login', function () {
-        return view('auth.login');
-    });
+    // Kategori
+    Route::resource('kategori', KategoriController::class);
+});
 
 // Kategori
 Route::resource('kategori', KategoriController::class);
 //Register
 Route::resource('register', RegisterController::class);
+
+// Cuma statusnya petugas doang yang bisa ngakses halaman berikut
+Route::middleware(['auth', 'status:petugas'])->group(function () {
+    // Dashboard Admin
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    Route::get('/konten', function () {
+        return view('admin.konten');
+    });
+    // Kategori
+    Route::resource('kategori', KategoriController::class);
+});
+
+
+
+// Cuma statusnya yang belom login yang bisa ngakses halaman berikut
+Route::middleware(['guest'])->group(function () {
+    // Login
+    Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+
+    Route::get('/register', function () {
+        return view('auth.register');
+    });
+});
+
+// Logout
+Route::post('/logout', [LoginController::class, 'logout']);
 
 
 // Route::get('/', function () { 

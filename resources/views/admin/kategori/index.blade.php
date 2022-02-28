@@ -1,6 +1,5 @@
 @extends('layouts/app')
-<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/bootstrap-5.1.3-dist/css/bootstrap.css') }}">
+
 @section('content')
     @if (session('Berhasil'))
         <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -61,5 +60,5 @@
                                 </table>
                             </div>
                         </div>
-                </div>
-    @endsection
+                    </div>
+        @endsection
