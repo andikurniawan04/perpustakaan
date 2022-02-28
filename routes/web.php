@@ -27,6 +27,8 @@ Route::middleware(['auth', 'status:anggota'])->group(function () {
     });
 });
 
+Route::resource('register', RegisterController::class);
+
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut
 Route::middleware(['auth', 'status:petugas'])->group(function () {
     // Dashboard Admin
