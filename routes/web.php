@@ -21,6 +21,9 @@ Route::middleware(['auth', 'status:anggota'])->group(function () {
     Route::get('/home', function () {
         return view('anggota.index');
     });
+    Route::get('/artikel', function () {
+        return view('anggota.artikel');
+    });
 });
 
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut
@@ -29,7 +32,10 @@ Route::middleware(['auth', 'status:petugas'])->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     });
-    // Admin.Kategori
+    Route::get('/konten', function () {
+        return view('admin.konten');
+    });
+    // Kategori
     Route::resource('kategori', KategoriController::class);
 
     // Admin.Buku

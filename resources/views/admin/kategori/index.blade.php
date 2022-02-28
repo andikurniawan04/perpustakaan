@@ -17,6 +17,7 @@
             </button>
         </div>
     @endif
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -64,15 +65,17 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $row->keterangan }}</td>
-                                                <td class="d-flex flex-row">
-                                                    <a href="{{ route('kategori.edit', $row->id_kategori) }}"
-                                                        class="btn btn-success mr-2">Edit</a>
+                                                <td class="d-flex flex-row justify-content-center">
+
                                                     <form action="{{ route('kategori.destroy', $row->id_kategori) }}"
                                                         method="POST">
+                                                        <a class="btn btn-success mr-2"
+                                                            href="{{ route('kategori.edit', $row->id_kategori) }}">Edit</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit">Delete</button>
                                                     </form>
+
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -82,11 +85,6 @@
                         </div>
                     </div>
 
-
-
-                    <!-- Footer -->
-                    @include('partials.footer')
-                    <!-- End of Footer -->
 
                 </div>
                 <!-- End of Content Wrapper -->
@@ -98,6 +96,9 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
+            <!-- Footer -->
+            @include('partials.footer')
+            <!-- End of Footer -->
 
             <!-- Logout Modal-->
             @include('partials.logout')

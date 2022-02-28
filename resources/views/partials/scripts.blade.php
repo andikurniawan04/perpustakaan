@@ -1,5 +1,5 @@
 {{-- Notify --}}
-@notifyJs
+{{-- @notifyJs --}}
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{ url('vendor/jquery/jquery.min.js') }}"></script>
