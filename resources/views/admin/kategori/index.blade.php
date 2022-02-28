@@ -17,6 +17,7 @@
             </button>
         </div>
     @endif
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -66,7 +67,7 @@
                                                 <td>{{ $row->keterangan }}</td>
                                                 <td class="d-flex flex-row">
                                                     <a href="{{ route('kategori.edit', $row->id_kategori) }}"
-                                                        class="btn btn-success mr-2">Edit</a>
+                                                        class="btn btn-success mr-2" style="padding: 5px 20px;">Edit</a>
                                                     <form action="{{ route('kategori.destroy', $row->id_kategori) }}"
                                                         method="POST">
                                                         @csrf
@@ -83,11 +84,6 @@
                     </div>
 
 
-
-                    <!-- Footer -->
-                    @include('partials.footer')
-                    <!-- End of Footer -->
-
                 </div>
                 <!-- End of Content Wrapper -->
 
@@ -98,6 +94,9 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
+                   <!-- Footer -->
+                                        @include('partials.footer')
+                    <!-- End of Footer -->
 
             <!-- Logout Modal-->
             @include('partials.logout')
