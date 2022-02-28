@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\BukuController;
+use App\Http\Controllers\ContohController;
 
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,21 +17,46 @@ use App\Http\Controllers\BukuController;
 |
 */
 
-// Dashboard
-Route::get('/', function () {
-    return view('admin.index');
+Route::middleware(['auth', 'status:anggota'])->group(function () {
+    // Dashboard Anggota
+    Route::get('/home', function () {
+        return view('anggota.index');
+    });
+    Route::get('/artikel', function () {
+        return view('anggota.artikel');
+    });
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
+// Cuma statusnya petugas doang yang bisa ngakses halaman berikut
+Route::middleware(['auth', 'status:petugas'])->group(function () {
+    // Dashboard Admin
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    Route::get('/konten', function () {
+        return view('admin.konten');
+    });
+    // Kategori
+    Route::resource('kategori', KategoriController::class);
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
+
+
+// Cuma statusnya yang belom login yang bisa ngakses halaman berikut
+Route::middleware(['guest'])->group(function () {
+    // Login
+    Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+
+    Route::get('/register', function () {
+        return view('auth.register');
+    });
 });
 
-// Admin.Kategori
-Route::resource('kategori', KategoriController::class);
+// Logout
+Route::post('/logout', [LoginController::class, 'logout']);
 
-// Admin.Buku
-Route::resource('buku', BukuController::class);
+
+// Route::get('/', function () { 
+//     return view('welcome');
+// });
