@@ -8,43 +8,37 @@ use Illuminate\Http\Request;
 
 class BukuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $data = Buku::all();
-        return view('buku.index', compact('data'));
+        return view('admin.buku.index', [
+            'title' => 'List Buku Perpustakaan',
+            'bukus' => Buku::with('category')->latest()->paginate(5)
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        $category = Kategori::all();
-        return view('buku.create', compact('category'));
+        return view('admin.buku.create', [
+            'categories' => Kategori::all()
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $buku = new Buku;
-        $buku->id_kategori = $request->kategori_id;
-        $buku->judul_buku = $request->judul;
-        $buku->pengarang = $request->pengarang;
-        $buku->penerbit = $request->penerbit;
-        $buku->save();
-        return redirect()->route('buku');
+        $result = Buku::create([
+            'judul_buku' => $request->judul,
+            'id_kategori' => $request->kategori_id,
+            'pengarang' => $request->pengarang,
+            'penerbit' => $request->penerbit,
+        ]);
+
+        if ($result) {
+            return redirect('/buku')->with('success', 'Data berhasil ditambahkan!');
+        } else {
+            return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+        }
     }
 
     /**
@@ -53,11 +47,9 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function show(Buku $id)
+    public function show(Buku $buku)
     {
-        $buku = Buku::find($id);
-        $category = Kategori::all();
-        return view('buku.show', compact('buku', 'category'));
+        return view('admin.buku.detail', ['buku' => $buku]);
     }
 
     /**
@@ -68,7 +60,10 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        //
+        return view('admin.buku.edit', [
+            'buku' => $buku,
+            'categories' => Kategori::all()
+        ]);
     }
 
     /**
@@ -78,11 +73,22 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buku $id)
+    public function update(Request $request, Buku $buku)
     {
-        $buku = Buku::find($id);
-        $buku->update($request->all());
-        return redirect()->route('buku');
+        $data = ([
+            'judul_buku' => $request->judul,
+            'id_kategori' => $request->kategori_id,
+            'pengarang' => $request->pengarang,
+            'penerbit' => $request->penerbit,
+        ]);
+
+        $result = Buku::where('id', $buku->id_buku)->update($data);
+
+        if ($result) {
+            return redirect('/buku')->with('message', 'Data added Successfully');;
+        } else {
+            return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+        }
     }
 
     /**
@@ -91,10 +97,10 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $id)
+    public function destroy(Buku $buku)
     {
-        $buku = Buku::find($id);
-        $buku->delete();
-        return redirect()->route('buku');
+        Buku::destroy([$buku->id_buku]);
+
+        return redirect('/buku')->with('success', 'Game is successfully saved');
     }
 }

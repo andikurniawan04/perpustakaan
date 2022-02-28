@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContohController;
-
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BukuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,9 +37,10 @@ Route::middleware(['auth', 'status:petugas'])->group(function () {
     });
     // Kategori
     Route::resource('kategori', KategoriController::class);
+
+    // Admin.Buku
+    Route::resource('buku', BukuController::class);
 });
-
-
 
 // Cuma statusnya yang belom login yang bisa ngakses halaman berikut
 Route::middleware(['guest'])->group(function () {
@@ -48,15 +48,9 @@ Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate']);
 
-    Route::get('/register', function () {
-        return view('auth.register');
-    });
+    //Register
+    Route::resource('register', RegisterController::class);
 });
 
 // Logout
 Route::post('/logout', [LoginController::class, 'logout']);
-
-
-// Route::get('/', function () { 
-//     return view('welcome');
-// });
