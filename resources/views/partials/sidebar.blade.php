@@ -22,13 +22,6 @@
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Nav Item - Konten -->
-    <li class="nav-item active">
-        <a class="nav-link" onclick="konten();">
-            <i class="fas fa-book"></i>
-            <span>Buku</span></a>
-    </li>
-
         <!-- Nav Item - Daftar Buku -->
         <li class="nav-item active">
         <a class="nav-link" onclick="listbuku();">

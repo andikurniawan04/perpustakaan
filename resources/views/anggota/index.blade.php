@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-<body onload="konten();">
+<body onload="artikel();">
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -65,10 +65,10 @@
 </body>
 
     <script type="text/javascript">
-        function konten(){
+        function artikel(){
                 $.ajax({
                 type:"GET",
-                url:"/konten"           
+                url:"/artikel"           
                 }).done(function(data){
                 $('#utama').html(data);
                 });

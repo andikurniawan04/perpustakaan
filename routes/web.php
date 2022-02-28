@@ -25,6 +25,14 @@ Route::get('/konten', function () {
         return view('admin.konten');
     });
 
+Route::get('/anggota', function () {
+        return view('anggota.index');
+    });
+
+Route::get('/artikel', function () {
+        return view('anggota.artikel');
+    });
+
 Route::get('/login', function () {
         return view('auth.login');
     });
