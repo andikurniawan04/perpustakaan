@@ -4,22 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Bus;
+
 
 class Buku extends Model
 {
     use HasFactory;
 
-    // Tidak membatasi jenis file
-    protected $guarded = [];
+    // // Tidak membatasi jenis file
+    protected $guarded = ['id_buku'];
 
-    public function kategori()
-    {
-        return $this->hasMany(Kategori::class);
-    }
+    protected $primaryKey = 'id_buku';
 
-    public function user()
+    public function category()
     {
-        return $this->belongsToMany(User::class, 'meminjams');
+        // Satu buku memiliki satu kategori
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
     }
 }

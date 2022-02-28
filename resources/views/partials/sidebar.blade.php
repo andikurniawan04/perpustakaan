@@ -3,8 +3,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon" style="margin-left: 20px;" >
-            <i class="fas fa-wind" ></i>
+        <div class="sidebar-brand-icon" style="margin-left: 20px;">
+            <i class="fas fa-wind"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Perpustakaan Admin </div>
     </a>
@@ -19,7 +19,7 @@
             <span>Dashboard</span></a>
     </li>
 
- 
+
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -40,6 +40,11 @@
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="/buku">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Daftar Buku</span></a>
     </li>
 
 

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Meminjam extends Model
 {
     use HasFactory;
+
+    public function user()
+    {
+        // Satu buku memiliki satu kategori
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
+    }
 }
