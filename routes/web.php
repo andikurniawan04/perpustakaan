@@ -24,8 +24,6 @@ Route::middleware(['auth', 'status:anggota'])->group(function () {
     });
 });
 
-// Kategori
-Route::resource('kategori', KategoriController::class);
 //Register
 Route::resource('register', RegisterController::class);
 
