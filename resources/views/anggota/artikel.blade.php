@@ -69,62 +69,89 @@
     </div>
 </div>
 </div>     
-                
+
+<div><h2>Koleksi Buku</h2></div>
 <!--Book Collection-->
 <div class="card-columns">
   <div class="card">
-    <img src="gambar4.jpg" class="card-img-top" alt="...">
+    <img src="img/buku1.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Belajar Bootstrap 4</h5>
-      <p class="card-text">halo.</p>
+      <h5 class="card-title">Politik Pendidikan</h5>
+      <p class="card-text">by Paulo Freire, Agung Prihantoro (Translator), Fuad Arif Fudiyartanto (Translator).
+      <p>Apa yang kau pelajari di sekolah hari ini, anakku?
+      Apa yang kau pelajari di sekolah hari ini, anakku?
+
+      Aku diajari bahwa Washington tidak pernah berdusta,
+      Aku diajari bahwa tentara itu tidak gampang mati,
+      Aku diajari bahwa setiap orang punya kebebasan,
+      Begitulah yang diajarkan guruku.
+      </p></p>
       <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
     </div>
   </div>
   <div class="card">
-    <img src="gambar4.jpg" class="card-img-top" alt="...">
+    <img src="img/buku2.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Belajar Bootstrap 4</h5>
-      <p class="card-text">Contoh content.</p>
+      <h5 class="card-title">Teknologi Untuk Masa Depan</h5>
+      <p class="card-text">by Najelaa Shihab & Komunitas Gurug Belajar.
+      <p>Teknologi untuk Masa Depan telah diluncurkan pada Temu Pendidik Nusantara 2019
+        sebagai fokus belajar di Komunitas Guru Belajar Nusantara. Kami memaknai
+        teknologi sebagai sejumlah kompetensi, metode, dan proses yang dapat
+        mempermudah manusia dalam melaksanakan sebuah pekerjaan, di mana dalam
+        konteks pendidikan, pekerjaan tersebut terkait dengan upaya
+        mengoptimalkan proses untuk mencapai tujuan pembelajaran. 
+      </p></p>
       <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
     </div>
   </div>
   <div class="card">
-    <img src="gambar4.jpg" class="card-img-top" alt="...">
+    <img src="img/buku3.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Belajar Bootstrap 4</h5>
-      <p class="card-text">Belajar bootstrap 4. di www.malasngoding.com</p>
+      <h5 class="card-title">Love from A to Z</h5>
+      <p class="card-text">by S.K. Ali.
+      <p>Buku ini mengangkat isu Islamofobia dan bersetting di Doha, Qatar. Penulis menghadirkan Islamofobia yang sering dihadapi wanita berhijab seperti Zayneb (tokoh utama). Tapi penulis tidak hanya menggambarkan sisi buruk yang dialami oleh Muslim di negara di mana Muslim adalah kaum minoritas, penulis juga menunjukkan kepada kita bagaimana tokoh-tokohnya mengamalkan ajaran Islam dalam kehidupan sehari-hari, serta bagaimana Muslim menjalin persahabatan dan memelihara sikap saling menghargai dengan non-Muslim.
+      </p></p>
       <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
     </div>
   </div>
   <div class="card">
-    <img src="gambar4.jpg" class="card-img-top" alt="...">
+    <img src="img/buku1.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Belajar Bootstrap 4</h5>
-      <p class="card-text">This.</p>
+      <h5 class="card-title">Politik Pendidikan</h5>
+      <p class="card-text">by Paulo Freire, Agung Prihantoro (Translator), Fuad Arif Fudiyartanto (Translator).
+      <p>Apa yang kau pelajari di sekolah hari ini, anakku?
+      Apa yang kau pelajari di sekolah hari ini, anakku?
+
+      Aku diajari bahwa Washington tidak pernah berdusta,
+      Aku diajari bahwa tentara itu tidak gampang mati,
+      Aku diajari bahwa setiap orang punya kebebasan,
+      Begitulah yang diajarkan guruku.
+      </p></p>
       <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
     </div>
   </div>
   <div class="card">
-    <img src="gambar4.jpg" class="card-img-top" alt="...">
+    <img src="img/buku2.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Belajar Bootstrap 4</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <h5 class="card-title">Teknologi Untuk Masa Depan</h5>
+      <p class="card-text">by Najelaa Shihab & Komunitas Gurug Belajar.
+      <p>Teknologi untuk Masa Depan telah diluncurkan pada Temu Pendidik Nusantara 2019
+        sebagai fokus belajar di Komunitas Guru Belajar Nusantara. Kami memaknai
+        teknologi sebagai sejumlah kompetensi, metode, dan proses yang dapat
+        mempermudah manusia dalam melaksanakan sebuah pekerjaan, di mana dalam
+        konteks pendidikan, pekerjaan tersebut terkait dengan upaya
+        mengoptimalkan proses untuk mencapai tujuan pembelajaran. 
+      </p></p>
       <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
     </div>
   </div>
   <div class="card">
-    <img src="gambar4.jpg" class="card-img-top" alt="...">
+    <img src="img/buku3.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Belajar Bootstrap 4</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
-    </div>
-  </div>
-   <div class="card">
-    <img src="gambar4.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Belajar Bootstrap 4</h5>
-      <p class="card-text">Contoh content.</p>
+      <h5 class="card-title">Love from A to Z</h5>
+      <p class="card-text">by S.K. Ali.
+      <p>Buku ini mengangkat isu Islamofobia dan bersetting di Doha, Qatar. Penulis menghadirkan Islamofobia yang sering dihadapi wanita berhijab seperti Zayneb (tokoh utama). Tapi penulis tidak hanya menggambarkan sisi buruk yang dialami oleh Muslim di negara di mana Muslim adalah kaum minoritas, penulis juga menunjukkan kepada kita bagaimana tokoh-tokohnya mengamalkan ajaran Islam dalam kehidupan sehari-hari, serta bagaimana Muslim menjalin persahabatan dan memelihara sikap saling menghargai dengan non-Muslim.
+      </p></p>
       <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
     </div>
   </div>
