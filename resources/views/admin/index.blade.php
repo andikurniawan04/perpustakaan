@@ -51,17 +51,17 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Data Anggota</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">200 Anggota</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">200 anggota</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-running fa-2x text-gray-300"></i>
+                                            <i class="fas fa-folder-open fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- User Anggota -->
+                        <!-- User -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -83,13 +83,14 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-spa fa-2x text-gray-300"></i>
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="" id="utama"></div>
 
                 <!-- /.container-fluid -->
 
@@ -122,7 +123,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih Logout untuk mengakhiri hubungan kita :)</div>
+                <div class="modal-body">Pilih Logout untuk keluar dari halaman</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Logout</a>
@@ -130,4 +131,33 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function konten(){
+                $.ajax({
+                type:"GET",
+                url:"/konten"           
+                }).done(function(data){
+                $('#utama').html(data);
+                });
+                }
+
+        function kategori(){
+                $.ajax({
+                type:"GET",
+                url:"/kategori"           
+                }).done(function(data){
+                $('#utama').html(data);
+                });
+                }
+
+        function listbuku(){
+                $.ajax({
+                type:"GET",
+                url:"/kategori"           
+                }).done(function(data){
+                $('#utama').html(data);
+                });
+                }
+    </script>
 @endsection
