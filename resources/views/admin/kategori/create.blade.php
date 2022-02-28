@@ -53,12 +53,6 @@
                         </div>
                     </div>
 
-
-
-                    <!-- Footer -->
-                    @include('partials.footer')
-                    <!-- End of Footer -->
-
                 </div>
                 <!-- End of Content Wrapper -->
 
@@ -69,7 +63,9 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
-
+<!-- Footer -->
+@include('partials.footer')
+                    <!-- End of Footer -->
             <!-- Logout Modal-->
             @include('partials.logout')
         @endsection

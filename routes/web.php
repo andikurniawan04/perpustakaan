@@ -25,14 +25,7 @@ Route::middleware(['auth', 'status:anggota'])->group(function () {
     Route::get('/artikel', function () {
         return view('anggota.artikel');
     });
-    // Kategori
-    Route::resource('kategori', KategoriController::class);
 });
-
-// Kategori
-Route::resource('kategori', KategoriController::class);
-//Register
-Route::resource('register', RegisterController::class);
 
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut
 Route::middleware(['auth', 'status:petugas'])->group(function () {

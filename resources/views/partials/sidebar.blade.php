@@ -31,7 +31,7 @@
 
             <!-- Nav Item - Daftar Kategori -->
             <li class="nav-item active">
-        <a class="nav-link" onclick="kategori();">
+        <a class="nav-link" href="/kategori">
             <i class="fas fa-id-card"></i>
             <span>Daftar Kategori</span></a>
     </li>
