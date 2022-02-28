@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContohController;
-use App\Http\Controllers\KategoriController;
 
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,27 +17,22 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
-// Dashboard
 Route::get('/', function () {
-    return view('admin.index');
-});
+        return view('admin.index');
+    });
 
 Route::get('/konten', function () {
-    return view('admin.konten');
-});
+        return view('admin.konten');
+    });
 
 Route::get('/login', function () {
-    return view('auth.login');
-});
-
-Route::get('/register', function () {
-    return view('auth.register');
-});
+        return view('auth.login');
+    });
 
 // Kategori
 Route::resource('kategori', KategoriController::class);
-
-Route::get('/contoh', [ContohController::class, 'index']);
+//Register
+Route::resource('register', RegisterController::class);
 
 
 // Route::get('/', function () { 
