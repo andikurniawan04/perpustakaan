@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContohController;
+
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 /*
@@ -22,6 +24,10 @@ Route::middleware(['auth', 'status:anggota'])->group(function () {
     });
 });
 
+// Kategori
+Route::resource('kategori', KategoriController::class);
+//Register
+Route::resource('register', RegisterController::class);
 
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut
 Route::middleware(['auth', 'status:petugas'])->group(function () {
@@ -49,8 +55,6 @@ Route::middleware(['guest'])->group(function () {
 // Logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
-
-Route::get('/contoh', [ContohController::class, 'index']);
 
 
 // Route::get('/', function () { 

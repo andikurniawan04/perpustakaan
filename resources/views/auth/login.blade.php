@@ -26,7 +26,6 @@
             <div class="row justify-content-center">
 
                 <div class="col-xl-10 col-lg-12 col-md-9">
-
                     <div class="card o-hidden border-0 shadow-lg my-5">
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
@@ -68,13 +67,12 @@
                                                 <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                             </a>
                                         </form>
-                                        <hr>
-                                        <div class="text-center">
-                                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <a class="small" href="/register">Create an Account!</a>
-                                        </div>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="/register">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
