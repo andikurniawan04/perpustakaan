@@ -101,6 +101,6 @@ class BukuController extends Controller
     {
         Buku::destroy([$buku->id_buku]);
 
-        return redirect('/buku')->with('success', 'Game is successfully saved');
+        return redirect('/buku')->with('success', 'Book is successfully saved');
     }
 }

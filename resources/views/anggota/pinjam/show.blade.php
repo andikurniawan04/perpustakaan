@@ -48,7 +48,7 @@
                                                 <div class="mb-3">
                                                     <label for="penerbit" class="form-label">Penerbit</label>
                                                     <input type="text" class="form-control" id="penerbit" name="penerbit"
-                                                        value="{{ $buku->pengarang }}" disabled>
+                                                        value="{{ $buku->penerbit }}" disabled>
                                                 </div>
                                                 <div class="d-flex justify-content-end mb-3">
                                                     <form action="{{ route('pinjam.store') }}" method="POST"

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\MeminjamController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\HistoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,9 +27,14 @@ Route::middleware(['auth', 'status:anggota'])->group(function () {
     Route::get('/artikel', function () {
         return view('anggota.artikel');
     });
-
     Route::resource('pinjam', MeminjamController::class);
+
+    // History
+    Route::resource('history', HistoryController::class);
 });
+
+//Register
+Route::resource('register', RegisterController::class);
 
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut
 Route::middleware(['auth', 'status:petugas'])->group(function () {

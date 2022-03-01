@@ -55,23 +55,5 @@
                 $('#utama').html(data);
                 });
                 }
-
-        function kategori(){
-                $.ajax({
-                type:"GET",
-                url:"/kategori"           
-                }).done(function(data){
-                $('#utama').html(data);
-                });
-                }
-
-        function listbuku(){
-                $.ajax({
-                type:"GET",
-                url:"/kategori"           
-                }).done(function(data){
-                $('#utama').html(data);
-                });
-                }
     </script>
 @endsection
