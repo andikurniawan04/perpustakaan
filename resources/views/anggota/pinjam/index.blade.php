@@ -49,9 +49,6 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <a href="{{ route('kategori.create') }}" class="btn btn-primary"><i
-                                            class="">New
-                                            Data</i></a>
                                     <thead>
                                         <tr>
                                             <th>No</th>
