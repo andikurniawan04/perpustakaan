@@ -6,6 +6,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\MeminjamController;
+use App\Http\Controllers\LaporanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,9 @@ Route::middleware(['auth', 'status:petugas'])->group(function () {
     });
     // Kategori
     Route::resource('kategori', KategoriController::class);
+
+    // Laporan
+    Route::resource('laporan', LaporanController::class);
 
     // Admin.Buku
     Route::resource('buku', BukuController::class);

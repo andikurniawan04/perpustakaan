@@ -20,4 +20,8 @@ class Meminjam extends Model
         // Satu buku memiliki satu kategori
         return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
+    public function buku()
+    {
+        return $this->belongsTo(Buku::class, 'id_buku', 'id_buku');
+    }
 }
