@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contoh;
 use Illuminate\Http\Request;
+use App\Models\Meminjam;
 
-class ContohController extends Controller
+class LaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class ContohController extends Controller
      */
     public function index()
     {
-        return view('contoh');
+        $laporan = Meminjam::all();
+        return view('admin.report.index', compact('laporan'));
     }
 
     /**
@@ -41,10 +42,10 @@ class ContohController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contoh  $contoh
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Contoh $contoh)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class ContohController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Contoh  $contoh
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contoh $contoh)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class ContohController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contoh  $contoh
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contoh $contoh)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class ContohController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Contoh  $contoh
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contoh $contoh)
+    public function destroy($id)
     {
         //
     }
