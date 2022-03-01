@@ -6,7 +6,8 @@
     </button>
 
     <!-- Topbar hello -->
-    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar" style="color:white;">Selamat Datang
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar" style="color:white;">
+        Selamat Datang
 
     </form>
 
@@ -34,11 +35,6 @@
                 </form>
             </div>
         </li>
-
-
-
-
-
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -72,5 +68,6 @@
         </li>
 
     </ul>
-
+    <!-- Logout Modal-->
+    @include('partials.logout')
 </nav>
