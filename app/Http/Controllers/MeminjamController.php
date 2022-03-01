@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meminjam;
+use App\Models\Buku;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class MeminjamController extends Controller
 {
@@ -14,7 +17,9 @@ class MeminjamController extends Controller
      */
     public function index()
     {
-        //
+        $buku = Buku::all();
+        $keterangan = Kategori::get();
+        return view('anggota.pinjam.index', ['keterangan' => $keterangan], compact('buku', 'keterangan'));
     }
 
     /**
@@ -35,7 +40,25 @@ class MeminjamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = Carbon::now();
+        $request->validate([
+            'id_user',
+            'id_buku'
+        ]);
+        $result = Meminjam::create([
+
+            'id_user' => $request->id_user,
+            'id_buku' => $request->id_buku,
+            'tanggal_pinjam' => $date->toDateString()
+        ]);
+
+        if ($result) {
+            return redirect()->route('pinjam.index')
+                ->with('Berhasil', 'Buku Berhasil Dipinjam');
+        } else {
+            return redirect()->route('pinjam.index')
+                ->with('Gagal', 'Buku gagal Dipinjam');
+        }
     }
 
     /**
@@ -44,9 +67,10 @@ class MeminjamController extends Controller
      * @param  \App\Models\Meminjam  $meminjam
      * @return \Illuminate\Http\Response
      */
-    public function show(Meminjam $meminjam)
+    public function show($id)
     {
-        //
+        $buku = Buku::findOrFail($id);
+        return view('anggota.pinjam.show', compact('buku'));
     }
 
     /**

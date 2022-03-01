@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\MeminjamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,8 @@ Route::middleware(['auth', 'status:anggota'])->group(function () {
     Route::get('/artikel', function () {
         return view('anggota.artikel');
     });
+
+    Route::resource('pinjam', MeminjamController::class);
 });
 
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut

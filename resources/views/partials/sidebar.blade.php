@@ -5,7 +5,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-icon" style="margin-left: 20px;">
                 <i class="fas fa-wind"></i>
             </div>
@@ -40,9 +40,9 @@
         @if (Auth::user()->status == 'anggota')
             <!-- Nav Item - Daftar Buku -->
             <li class="nav-item active">
-                <a class="nav-link" href="/buku">
+                <a class="nav-link" href="/pinjam">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>User</span></a>
+                    <span>Buku</span></a>
             </li>
         @endif
         <!-- Divider -->

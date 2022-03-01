@@ -73,7 +73,7 @@
                                                 <td>{{ $row->penerbit }}</td>
                                                 <td>
                                                     <a class="btn btn-info"
-                                                        href="{{ route('kategori.edit', $row->id_buku) }}">Pinjam</a>
+                                                        href="{{ route('pinjam.show', $row->id_buku) }}">Pinjam</a>
                                                 </td>
                                             </tr>
                                         @endforeach

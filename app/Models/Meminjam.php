@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Meminjam extends Model
 {
     use HasFactory;
+    protected $guarded = ['id_peminjaman'];
+    protected $fillable = [
+        'id_user',
+        'id_buku',
+        'tanggal_pinjam'
+    ];
 
     public function user()
     {
