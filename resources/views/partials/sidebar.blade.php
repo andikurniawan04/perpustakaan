@@ -50,6 +50,12 @@
                     <i class="fas fa-book"></i>
                     <span>Buku</span></a>
             </li>
+            <!-- Nav Item - Daftar Buku -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/history">
+                    <i class="fas fa-history"></i>
+                    <span>History Peminjaman</span></a>
+            </li>
         @endif
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
