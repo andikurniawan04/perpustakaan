@@ -4,6 +4,22 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 @section('content')
+    @if (session('Berhasil'))
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{ session('Berhasil') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    @if (session('Gagal'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('Gagal') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div id="wrapper">
         @include('partials.sidebar')
         <div id="content-wrapper" class="d-flex flex-column">
@@ -49,13 +65,13 @@
                                                     <a href="/buku/{{ $buku->id_buku }}/edit" type="button"
                                                         class="btn btn-primary"><span>
                                                             <i class="fas fa-edit"></i></span></a>
-                                                    <form action="/buku/{{ $buku->id_buku }}" method="POST"
-                                                        class="d-inline">
+                                                    <form action="{{ route('buku.destroy', $buku->id_buku) }}"
+                                                        method="POST" class="d-inline">
                                                         @method('delete')
                                                         @csrf
-                                                        <a class="btn btn-danger border-0"
+                                                        <button class="btn btn-danger border-0" type="submit"
                                                             onclick="return confirm('Apakah kamu yakin?')"><span>
-                                                                <i class="fas fa-trash"></i></span></a>
+                                                                <i class="fas fa-trash"></i></span></button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -72,7 +88,7 @@
             </div>
             @include('partials.footer')
         </div>
-        
+
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>

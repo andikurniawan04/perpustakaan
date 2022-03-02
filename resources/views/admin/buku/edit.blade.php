@@ -21,9 +21,9 @@
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-md-8">
-                                            <form method="post"
-                                                action="{{ route('buku.store', ['id' => $buku->id_buku]) }}">
+                                            <form method="post" action="{{ route('buku.update', $buku->id_buku) }}">
                                                 @csrf
+                                                @method("PUT")
                                                 <div class="mb-3">
                                                     <label for="judul" class="form-label">Judul Buku</label>
                                                     <input type="text" class="form-control" id="judul" name="judul"
@@ -37,11 +37,11 @@
                                                         @foreach ($categories as $category)
                                                             @if (old('kategori_id', $buku->id_kategori) == $category->id_kategori)
                                                                 <option value="{{ $category->id_kategori }}" selected>
-                                                                    {{                                                                     $category->keterangan }}
+                                                                    {{ $category->keterangan }}
                                                                 </option>
                                                             @else
                                                                 <option value="{{ $category->id_kategori }}">
-                                                                    {{                                                                     $category->keterangan }}
+                                                                    {{ $category->keterangan }}
                                                                 </option>
                                                             @endif
                                                         @endforeach
