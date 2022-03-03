@@ -4,17 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use App\Models\Kategori;
+use App\Models\Meminjam;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BukuController extends Controller
 {
 
     public function index()
     {
-        return view('admin.buku.index', [
-            'title' => 'List Buku Perpustakaan',
-            'bukus' => Buku::with('category')->latest()->paginate(5)
-        ]);
+        $user = auth()->user()->id;
+        if (Auth::user($user)->status == 'petugas') {
+            return view('admin.buku.index', [
+                'title' => 'List Buku Perpustakaan',
+                'bukus' => Buku::with('category')->latest()->paginate(5)
+            ]);
+        } else if (Auth::user($user)->status == 'anggota') {
+            return view('anggota.buku.index', [
+                'title' => 'List Buku Perpustakaan',
+                'bukus' => Buku::with('category')->latest()->paginate(5)
+            ]);
+        }
     }
 
 
@@ -27,17 +39,20 @@ class BukuController extends Controller
 
     public function store(Request $request)
     {
-        $result = Buku::create([
-            'judul_buku' => $request->judul,
-            'id_kategori' => $request->kategori_id,
-            'pengarang' => $request->pengarang,
-            'penerbit' => $request->penerbit,
-        ]);
+        $user = auth()->user()->id;
+        if (Auth::user($user)->status == 'petugas') {
+            $result = Buku::create([
+                'judul_buku' => $request->judul,
+                'id_kategori' => $request->kategori_id,
+                'pengarang' => $request->pengarang,
+                'penerbit' => $request->penerbit,
+            ]);
 
-        if ($result) {
-            return redirect('/buku')->with('success', 'Data berhasil ditambahkan!');
-        } else {
-            return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+            if ($result) {
+                return redirect('/buku')->with('success', 'Data berhasil ditambahkan!');
+            } else {
+                return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+            }
         }
     }
 

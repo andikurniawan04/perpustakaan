@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Meminjam;
 use App\Models\Buku;
+use App\Models\User;
 use App\Models\Kategori;
+use App\Models\Meminjam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MeminjamController extends Controller
 {
@@ -15,21 +18,25 @@ class MeminjamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function indexAnggota()
     {
+
+        $books = Buku::all()->count();
+        $collBooks = Buku::with('category')->latest()->paginate(6);
+        $categories = Kategori::all()->count();
+        $users = User::where('status', 'anggota')->count();
+        $admins = User::where('status', 'admin')->count();
+        return view('anggota.index', compact('collBooks', 'books', 'admins', 'users', 'categories'));
+    }
+
+    public function index()
+
+    {
+
         $buku = Buku::all();
         $keterangan = Kategori::get();
         return view('anggota.pinjam.index', ['keterangan' => $keterangan], compact('buku', 'keterangan'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -38,26 +45,27 @@ class MeminjamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Buku $buku)
     {
-        $date = Carbon::now();
+        $start = Carbon::today();
+        $until = clone $start;
+        $end = $until->addWeek();
+
         $request->validate([
             'id_user',
             'id_buku'
         ]);
+
         $result = Meminjam::create([
+                'id_user' => $request->id_user,
+                'id_buku' => $request->id_buku,
+                'tanggal_pinjam' => $start->toDateString(),
+                'tanggal_kembali' => $end->toDateString(),
+            ]);
 
-            'id_user' => $request->id_user,
-            'id_buku' => $request->id_buku,
-            'tanggal_pinjam' => $date->toDateString()
-        ]);
-
-        if ($result) {
-            return redirect()->route('pinjam.index')
-                ->with('Berhasil', 'Buku Berhasil Dipinjam');
-        } else {
-            return redirect()->route('pinjam.index')
-                ->with('Gagal', 'Buku gagal Dipinjam');
+        if($result){
+            Alert::success('Berhasil', 'Buku berhasil dipinjam selama satu minggu');
+            return redirect()->route('pinjam.index');
         }
     }
 
@@ -71,39 +79,5 @@ class MeminjamController extends Controller
     {
         $buku = Buku::findOrFail($id);
         return view('anggota.pinjam.show', compact('buku'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Meminjam  $meminjam
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Meminjam $meminjam)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Meminjam  $meminjam
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Meminjam $meminjam)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Meminjam  $meminjam
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Meminjam $meminjam)
-    {
-        //
     }
 }

@@ -11,6 +11,7 @@ class CreateMeminjamsTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('meminjams', function (Blueprint $table) {
@@ -19,7 +20,6 @@ class CreateMeminjamsTable extends Migration
             $table->unsignedBigInteger('id_buku');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
-            $table->integer('jumlah');
             $table->foreign('id_user')->references('id_user')->on('users');
             $table->foreign('id_buku')->references('id_buku')->on('bukus');
             $table->timestamps();
