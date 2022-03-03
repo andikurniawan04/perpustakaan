@@ -63,19 +63,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Nav Item - Daftar Buku -->
-    <li class="nav-item {{ request()->is('buku') ? 'active' : '' }}">
-        <a class="nav-link" href="buku">
-            <i class="fas fa-book-dead"></i>
-            <span>Daftar Buku</span></a>
-    </li>
-
-    <!-- Nav Item - Daftar Kategori -->
-    <li class="nav-item {{ request()->is('kategori') ? 'active' : '' }}">
-        <a class="nav-link" href="/kategori">
-            <i class="fas fa-id-card"></i>
-            <span>Daftar Kategori</span></a>
-    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
