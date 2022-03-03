@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meminjam;
 use App\Models\Buku;
+use App\Models\User;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -15,6 +16,18 @@ class MeminjamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function indexAnggota()
+    {
+
+        $books = Buku::all()->count();
+        $collBooks = Buku::with('category')->latest()->paginate(6);
+        $categories = Kategori::all()->count();
+        $users = User::where('status', 'anggota')->count();
+        $admins = User::where('status', 'admin')->count();
+        return view('anggota.index', compact('collBooks', 'books', 'admins', 'users', 'categories'));
+    }
+
     public function index()
     {
         $buku = Buku::all();

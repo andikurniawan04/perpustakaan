@@ -21,15 +21,10 @@ use App\Http\Controllers\HistoryController;
 
 Route::middleware(['auth', 'status:anggota'])->group(function () {
     // Dashboard Anggota
-    Route::get('/home', function () {
-        return view('anggota.index');
-    });
-    Route::get('/artikel', function () {
-        return view('anggota.artikel');
-    });
+    Route::get('/home', [MeminjamController::class, 'indexAnggota']);
+
     Route::resource('pinjam', MeminjamController::class);
 
-    // History
     Route::resource('history', HistoryController::class);
 });
 
