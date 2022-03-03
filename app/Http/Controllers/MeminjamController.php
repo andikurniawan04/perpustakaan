@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Meminjam;
 use App\Models\Buku;
 use App\Models\User;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Appointment;
 
 class MeminjamController extends Controller
 {
@@ -17,9 +16,23 @@ class MeminjamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function indexAnggota()
+    {
+
+        $books = Buku::all()->count();
+        $collBooks = Buku::with('category')->latest()->paginate(6);
+        $categories = Kategori::all()->count();
+        $users = User::where('status', 'anggota')->count();
+        $admins = User::where('status', 'admin')->count();
+        return view('anggota.index', compact('collBooks', 'books', 'admins', 'users', 'categories'));
+    }
+
     public function index()
     {
-        //
+        $buku = Buku::all();
+        $keterangan = Kategori::get();
+        return view('anggota.pinjam.index', ['keterangan' => $keterangan], compact('buku', 'keterangan'));
     }
 
     /**
@@ -40,18 +53,24 @@ class MeminjamController extends Controller
      */
     public function store(Request $request, Buku $buku)
     {
-        $user = Auth::id();
+        $date = Carbon::now();
+        $request->validate([
+            'id_user',
+            'id_buku'
+        ]);
         $result = Meminjam::create([
-            'id_user' => $user,
-            'id_buku' => $request->input('id', $buku->id_buku),
-            'tanggal_pinjam' => Carbon::now(),
-            'tanggal_kembali' => Carbon::now(),
+
+            'id_user' => $request->id_user,
+            'id_buku' => $request->id_buku,
+            'tanggal_pinjam' => $date->toDateString()
         ]);
 
         if ($result) {
-            return redirect('/buku')->with('success', 'Data berhasil ditambahkan!');
+            return redirect()->route('pinjam.index')
+                ->with('Berhasil', 'Buku Berhasil Dipinjam');
         } else {
-            return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+            return redirect()->route('pinjam.index')
+                ->with('Gagal', 'Buku gagal Dipinjam');
         }
     }
 
@@ -61,9 +80,10 @@ class MeminjamController extends Controller
      * @param  \App\Models\Meminjam  $meminjam
      * @return \Illuminate\Http\Response
      */
-    public function show(Meminjam $meminjam)
+    public function show($id)
     {
-        //
+        $buku = Buku::findOrFail($id);
+        return view('anggota.pinjam.show', compact('buku'));
     }
 
     /**

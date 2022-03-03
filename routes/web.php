@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BukuController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\MeminjamController;
-
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\HistoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,16 +21,15 @@ use App\Http\Controllers\MeminjamController;
 
 Route::middleware(['auth', 'status:anggota'])->group(function () {
     // Dashboard Anggota
-    Route::get('/home', function () {
-        return view('anggota.index');
-    });
-    Route::get('/artikel', function () {
-        return view('anggota.artikel');
-    });
+    Route::get('/home', [MeminjamController::class, 'indexAnggota']);
 
-    Route::resource('buku', BukuController::class);
-    Route::resource('meminjam', MeminjamController::class);
+    Route::resource('pinjam', MeminjamController::class);
+
+    Route::resource('history', HistoryController::class);
 });
+
+//Register
+Route::resource('register', RegisterController::class);
 
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut
 Route::middleware(['auth', 'status:petugas'])->group(function () {
@@ -42,10 +42,13 @@ Route::middleware(['auth', 'status:petugas'])->group(function () {
     });
     // Kategori
     Route::resource('kategori', KategoriController::class);
-    Route::resource('admin/buku', BukuController::class);
+
+    // Laporan
+    Route::resource('laporan', LaporanController::class);
+
+    // Admin.Buku
+    Route::resource('buku', BukuController::class);
 });
-
-
 
 // Cuma statusnya yang belom login yang bisa ngakses halaman berikut
 Route::middleware(['guest'])->group(function () {
@@ -53,17 +56,9 @@ Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate']);
 
-    // Route::get('/register', function () {
-    //     return view('auth.register');
-    // });
-
-    Route::resource('/register', RegisterController::class);
+    //Register
+    Route::resource('register', RegisterController::class);
 });
 
 // Logout
 Route::post('/logout', [LoginController::class, 'logout']);
-
-
-// Route::get('/', function () { 
-//     return view('welcome');
-// });

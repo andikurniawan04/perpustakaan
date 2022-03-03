@@ -88,7 +88,7 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Request $request, $id)
     {
         $data = ([
             'judul_buku' => $request->judul,
@@ -97,12 +97,19 @@ class BukuController extends Controller
             'penerbit' => $request->penerbit,
         ]);
 
-        $result = Buku::where('id', $buku->id_buku)->update($data);
+        $result = Buku::findOrFail($id)->update([
+            'judul_buku' => $request->judul,
+            'id_kategori' => $request->kategori_id,
+            'pengarang' => $request->pengarang,
+            'penerbit' => $request->penerbit,
+        ]);
 
         if ($result) {
-            return redirect('/buku')->with('message', 'Data added Successfully');;
+            return redirect()->route('buku.index')
+                ->with('Berhasil', 'Data Berhasil Diubah');
         } else {
-            return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+            return redirect()->route('buku.index')
+                ->with('Gagal', 'Data gagal Diubah');
         }
     }
 
@@ -114,8 +121,14 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        Buku::destroy([$buku->id_buku]);
+        $result = Buku::destroy([$buku->id_buku]);
 
-        return redirect('/buku')->with('success', 'Game is successfully saved');
+        if ($result) {
+            return redirect()->route('buku.index')
+                ->with('Berhasil', 'Data Berhasil Dihapus');
+        } else {
+            return redirect()->route('buku.index')
+                ->with('Gagal', 'Data gagal Dihapus');
+        }
     }
 }

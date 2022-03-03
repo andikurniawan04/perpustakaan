@@ -19,8 +19,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
-
-
         Kategori::create([
             'keterangan' => 'BAHASA'
         ]);
@@ -34,6 +32,6 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'SAINS'
         ]);
 
-        Buku::factory(30)->create();
+        Buku::factory(1000)->create();
     }
 }
