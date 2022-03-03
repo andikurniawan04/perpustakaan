@@ -18,8 +18,8 @@ class CreateMeminjamsTable extends Migration
             $table->id('id_peminjaman');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_buku');
-            $table->dateTime('tanggal_pinjam');
-            $table->dateTime('tanggal_kembali');
+            $table->date('tanggal_pinjam');
+            $table->date('tanggal_kembali');
             $table->foreign('id_user')->references('id_user')->on('users');
             $table->foreign('id_buku')->references('id_buku')->on('bukus');
             $table->timestamps();

@@ -12,7 +12,8 @@ class Meminjam extends Model
     protected $fillable = [
         'id_user',
         'id_buku',
-        'tanggal_pinjam'
+        'tanggal_pinjam',
+        'tanggal_kembali',
     ];
 
     public function user()

@@ -6,6 +6,7 @@
 {{-- Body --}}
 
 <body id="page-top">
+    @include('sweetalert::alert')
 
     <body onload="artikel();">
         <!-- Page Wrapper -->
