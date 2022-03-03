@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Buku;
+use App\Models\User;
 use App\Models\Kategori;
+use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +19,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+
         User::factory(10)->create();
 
         Kategori::create([
