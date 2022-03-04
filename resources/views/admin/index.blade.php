@@ -1,4 +1,4 @@
-@extends('layouts/app')
+{{-- @extends('layouts/app')
 
 @section('content')
 <body onload="konten();">
@@ -65,4 +65,4 @@
                 });
                 }
     </script>
-@endsection
+@endsection --}}

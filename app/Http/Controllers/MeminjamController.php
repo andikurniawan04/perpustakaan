@@ -57,13 +57,13 @@ class MeminjamController extends Controller
         ]);
 
         $result = Meminjam::create([
-                'id_user' => $request->id_user,
-                'id_buku' => $request->id_buku,
-                'tanggal_pinjam' => $start->toDateString(),
-                'tanggal_kembali' => $end->toDateString(),
-            ]);
+            'id_user' => $request->id_user,
+            'id_buku' => $request->id_buku,
+            'tanggal_pinjam' => $start->toDateString(),
+            'tanggal_kembali' => $end->toDateString(),
+        ]);
 
-        if($result){
+        if ($result) {
             Alert::success('Berhasil', 'Buku berhasil dipinjam selama satu minggu');
             return redirect()->route('pinjam.index');
         }
