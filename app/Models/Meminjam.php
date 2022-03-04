@@ -13,16 +13,12 @@ class Meminjam extends Model
         'id_user',
         'id_buku',
         'tanggal_pinjam',
-        'tanggal_kembali',
+        // 'tanggal_kembali',
     ];
 
     public function user()
     {
         // Satu buku memiliki satu kategori
         return $this->belongsTo(User::class, 'id_user', 'id_user');
-    }
-    public function buku()
-    {
-        return $this->belongsTo(Buku::class, 'id_buku', 'id_buku');
     }
 }

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
+
+
         Kategori::create([
             'keterangan' => 'BAHASA'
         ]);
@@ -36,6 +38,10 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'SAINS'
         ]);
 
+<<<<<<< HEAD
         Buku::factory(5)->create();
+=======
+        Buku::factory(30)->create();
+>>>>>>> parent of 8969adb (Merge branch 'maulana' of https://github.com/andikurniawan04/perpustakaan into maulana)
     }
 }

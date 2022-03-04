@@ -19,7 +19,6 @@ class CreateBukusTable extends Migration
             $table->string('judul_buku', 100);
             $table->string('pengarang', 100);
             $table->string('penerbit', 100);
-            $table->integer('jumlah');
             $table->foreign('id_kategori')->references('id_kategori')->on('kategori');
             $table->timestamps();
         });

@@ -14,11 +14,10 @@ class BukuFactory extends Factory
     public function definition()
     {
         return [
-            'id_kategori' => $this->faker->numberBetween(1, 4),
-            'judul_buku' => $this->faker->sentence(3),
+            'id_kategori' => 1,
+            'judul_buku' => $this->faker->word(),
             'pengarang' => $this->faker->name(),
-            'jumlah' => $this->faker->randomNumber(2),
-            'penerbit' => $this->faker->domainName(),
+            'penerbit' => $this->faker->city(),
         ];
     }
 }

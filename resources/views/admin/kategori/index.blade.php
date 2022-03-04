@@ -65,17 +65,15 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $row->keterangan }}</td>
-                                                <td class="d-flex flex-row justify-content-center">
-
+                                                <td class="d-flex flex-row">
+                                                    <a href="{{ route('kategori.edit', $row->id_kategori) }}"
+                                                        class="btn btn-success mr-2" style="padding: 5px 20px;">Edit</a>
                                                     <form action="{{ route('kategori.destroy', $row->id_kategori) }}"
                                                         method="POST">
-                                                        <a class="btn btn-success mr-2"
-                                                            href="{{ route('kategori.edit', $row->id_kategori) }}">Edit</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit">Delete</button>
                                                     </form>
-
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -96,9 +94,9 @@
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
-            <!-- Footer -->
-            @include('partials.footer')
-            <!-- End of Footer -->
+                   <!-- Footer -->
+                                        @include('partials.footer')
+                    <!-- End of Footer -->
 
             <!-- Logout Modal-->
             @include('partials.logout')
