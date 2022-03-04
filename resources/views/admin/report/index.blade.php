@@ -22,6 +22,7 @@
                                 <th>Nama Buku</th>
                                 <th>Kategori Buku</th>
                                 <th>Tanggal Pinjam</th>
+                                <th>Tanggal Kembali</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,7 +33,10 @@
                                     <td>{{ $row->user->name }}</td>
                                     <td>{{ $row->buku->judul_buku }}</td>
                                     <td>{{ $row->buku->category->keterangan }}</td>
-                                    <td>{{ $row->tanggal_pinjam }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($row->tanggal_pinjam)->translatedFormat('l, d F Y') }}
+                                    </td>
+                                    <td>{{ \Carbon\Carbon::parse($row->tanggal_kembali)->translatedFormat('l, d F Y') }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

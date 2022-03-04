@@ -21,12 +21,11 @@ class MeminjamController extends Controller
 
     public function indexAnggota()
     {
-
         $books = Buku::all()->count();
         $collBooks = Buku::with('category')->latest()->paginate(6);
         $categories = Kategori::all()->count();
         $users = User::where('status', 'anggota')->count();
-        $admins = User::where('status', 'admin')->count();
+        $admins = User::where('status', 'petugas')->count();
         return view('anggota.index', compact('collBooks', 'books', 'admins', 'users', 'categories'));
     }
 

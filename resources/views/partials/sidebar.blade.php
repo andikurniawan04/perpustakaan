@@ -21,20 +21,20 @@
                 <span>Dashboard</span></a>
         </li>
         <!-- Nav Item - Daftar Buku -->
-        <li class="nav-item active">
+        <li class="nav-item {{ request()->is('buku') ? 'active' : '' }}">
             <a class="nav-link" href="/buku">
                 <i class="fas fa-book"></i>
                 <span>Buku</span></a>
         </li>
 
         <!-- Nav Item - Daftar Kategori -->
-        <li class="nav-item active">
+        <li class="nav-item {{ request()->is('kategori') ? 'active' : '' }}">
             <a class="nav-link" href="/kategori">
                 <i class="fas fa-list"></i>
                 <span>Kategori</span></a>
         </li>
 
-        <li class="nav-item active">
+        <li class="nav-item {{ request()->is('laporan') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('laporan.index') }}">
                 <i class="fas fa-book-open"></i>
                 <span>Report Pinjam Buku</span></a>

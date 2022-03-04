@@ -36,6 +36,6 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'SAINS'
         ]);
 
-        Buku::factory(5)->create();
+        Buku::factory(100)->create();
     }
 }

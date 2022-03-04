@@ -52,6 +52,11 @@
                                         <input type="text" class="form-control" id="penerbit" name="penerbit"
                                             value="{{ old('penerbit', $buku->penerbit) }}" required>
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="Jumlah" class="form-label">Jumlah</label>
+                                        <input type="text" class="form-control" id="jumlah" name="jumlah"
+                                            value="{{ $buku->jumlah }}">
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>

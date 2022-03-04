@@ -34,12 +34,8 @@ Route::resource('register', RegisterController::class);
 // Cuma statusnya petugas doang yang bisa ngakses halaman berikut
 Route::middleware(['auth', 'status:petugas'])->group(function () {
     // Dashboard Admin
-    Route::get('/', function () {
-        return view('admin.index');
-    });
-    Route::get('/konten', function () {
-        return view('admin.konten');
-    });
+    Route::get('/', [BukuController::class, 'indexAdmin']);
+
     // Kategori
     Route::resource('kategori', KategoriController::class);
 
@@ -59,6 +55,7 @@ Route::middleware(['guest'])->group(function () {
     //Register
     Route::resource('register', RegisterController::class);
 });
+
 
 // Logout
 Route::post('/logout', [LoginController::class, 'logout']);

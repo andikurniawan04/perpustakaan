@@ -1,22 +1,6 @@
 @extends('layouts/app')
 
 @section('content')
-    @if (session('Berhasil'))
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-            {{ session('Berhasil') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    @if (session('Gagal'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('Gagal') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
