@@ -41,19 +41,17 @@
                                         <input type="text" class="form-control" id="penerbit" name="penerbit"
                                             value="{{ $buku->penerbit }}" disabled>
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="Jumlah" class="form-label">Jumlah</label>
+                                        <input type="text" class="form-control" id="jumlah" name="jumlah"
+                                            value="{{ $buku->jumlah }}" disabled>
+                                    </div>
                                     <div class="d-flex justify-content-end mb-3">
                                         <a href="javascript:history.back()" type="button"
                                             class="btn btn-secondary mr-3"><span>Kembali</i></span></a>
                                         <a href="/buku/{{ $buku->id_buku }}/edit" type="button"
                                             class="btn btn-primary mr-3"><span>
                                                 <i class="fas fa-edit"></i></span></a>
-                                        <form action="/buku/{{ $buku->id_buku }}" method="POST" class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <a class="btn btn-danger border-0"
-                                                onclick="return confirm('Apakah kamu yakin?')"><span>
-                                                    <i class="fas fa-trash"></i></span></a>
-                                        </form>
                                     </div>
                                 </form>
                             </div>

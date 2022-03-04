@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Kategori;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KategoriController extends Controller
 {
@@ -44,12 +45,13 @@ class KategoriController extends Controller
             'keterangan' => $request->nama
         ]);
 
+
         if ($result) {
-            return redirect()->route('kategori.index')
-                ->with('Berhasil', 'Data Berhasil Ditambahkan');
+            Alert::success('Berhasil', 'Data Berhasil ditambahkan');
+            return redirect()->route('kategori.index');
         } else {
-            return redirect()->route('kategori.index')
-                ->with('Gagal', 'Data gagal Ditambahkan');
+            Alert::warning('Gagal', 'Data tidak Berhasil ditambahkan');
+            return redirect()->route('kategori.index');
         }
     }
 
@@ -92,11 +94,11 @@ class KategoriController extends Controller
         ]);
 
         if ($result) {
-            return redirect()->route('kategori.index')
-                ->with('Berhasil', 'Data Berhasil Diubah');
+            Alert::success('Berhasil', 'Data Berhasil diUbah');
+            return redirect()->route('kategori.index');
         } else {
-            return redirect()->route('kategori.index')
-                ->with('Gagal', 'Data gagal Diubah');
+            Alert::warning('Gagal', 'Data tidak Berhasil diUbah');
+            return redirect()->route('kategori.index');
         }
     }
 
@@ -110,11 +112,11 @@ class KategoriController extends Controller
     {
         $result = Kategori::findOrFail($id)->delete();
         if ($result) {
-            return redirect()->route('kategori.index')
-                ->with('Berhasil', 'Data Berhasil Dihapus');
+            Alert::success('Berhasil', 'Data Berhasil diHapus');
+            return redirect()->route('kategori.index');
         } else {
-            return redirect()->route('kategori.index')
-                ->with('Gagal', 'Data gagal Dihapus');
+            Alert::warning('Gagal', 'Data tidak Berhasil diHapus');
+            return redirect()->route('kategori.index');
         }
     }
 }

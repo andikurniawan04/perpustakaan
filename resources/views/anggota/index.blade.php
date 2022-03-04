@@ -143,5 +143,4 @@
             </div>
         @endforeach
     </div>
-    >>>>>>> 4477758a110ffd83e3491e5beecfc33cd82b8639
 @endsection

@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Buku;
+use App\Models\User;
 use App\Models\Kategori;
 use App\Models\Meminjam;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BukuController extends Controller
 {
+
+    public function indexAdmin()
+    {
+        $books = Buku::all()->count();
+        $collBooks = Buku::with('category')->latest()->paginate(6);
+        $categories = Kategori::all()->count();
+        $users = User::where('status', 'anggota')->count();
+        $admins = User::where('status', 'petugas')->count();
+        return view('admin.index', compact('collBooks', 'books', 'admins', 'users', 'categories'));
+    }
 
     public function index()
     {
@@ -46,12 +57,15 @@ class BukuController extends Controller
                 'id_kategori' => $request->kategori_id,
                 'pengarang' => $request->pengarang,
                 'penerbit' => $request->penerbit,
+                'jumlah' => $request->jumlah,
             ]);
 
             if ($result) {
-                return redirect('/buku')->with('success', 'Data berhasil ditambahkan!');
+                Alert::success('Berhasil', 'Data berhasil ditambahkan!');
+                return redirect('/buku');
             } else {
-                return redirect('/buku')->with('failed', 'Data gagal ditambahkan!');
+                Alert::warning('Gagal', 'Data tidak berhasil ditambahkan!');
+                return redirect('/buku');
             }
         }
     }
@@ -102,14 +116,15 @@ class BukuController extends Controller
             'id_kategori' => $request->kategori_id,
             'pengarang' => $request->pengarang,
             'penerbit' => $request->penerbit,
+            'jumlah' => $request->jumlah,
         ]);
 
         if ($result) {
-            return redirect()->route('buku.index')
-                ->with('Berhasil', 'Data Berhasil Diubah');
+            Alert::success('Berhasil', 'Data Berhasil Diubah');
+            return redirect()->route('buku.index');
         } else {
-            return redirect()->route('buku.index')
-                ->with('Gagal', 'Data gagal Diubah');
+            Alert::warning('Berhasil', 'Data Berhasil Diubah');
+            return redirect()->route('buku.index');
         }
     }
 
@@ -124,11 +139,11 @@ class BukuController extends Controller
         $result = Buku::destroy([$buku->id_buku]);
 
         if ($result) {
-            return redirect()->route('buku.index')
-                ->with('Berhasil', 'Data Berhasil Dihapus');
+            Alert::success('Berhasil', 'Data Berhasil DiHapus');
+            return redirect()->route('buku.index');
         } else {
-            return redirect()->route('buku.index')
-                ->with('Gagal', 'Data gagal Dihapus');
+            Alert::warning('Berhasil', 'Data Berhasil DiHapus');
+            return redirect()->route('buku.index');
         }
     }
 }
