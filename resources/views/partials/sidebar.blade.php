@@ -60,8 +60,6 @@
                 <span>History Peminjaman</span></a>
         </li>
     @endif
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
 
 
     <!-- Divider -->
